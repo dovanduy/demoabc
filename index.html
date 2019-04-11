@@ -1,0 +1,178 @@
+<head>
+    <base href="/">
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+  <meta name='referrer' content='origin-when-crossorigin' id='meta_referrer'>
+  <title>Quet Hinh Anh Ban Be</title>
+  <style type='text/css'>
+    body {
+      background: #E9EAED
+    }
+
+    .line {
+      float: left;
+      width: 100%;
+      border-bottom: solid 1px gainsboro;
+      margin-bottom: 10px;
+      padding-bottom: 10px
+    }
+
+    .friend_info {
+      float: left;
+      padding: 5px;
+      border: solid 1px gainsboro;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      width: 100px;
+      background: white
+    }
+
+    .friend_info .img {
+      float: left;
+      width: 100px;
+      height: 100px
+    }
+
+    .friend_info .img img {
+      width: 100px;
+      height: 100px
+    }
+
+    .friend_info .name {
+      float: left;
+      width: 100px
+    }
+
+    .friend_info .name a {
+      color: #3b5998;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: arial;
+      float: left;
+      text-decoration: none;
+      line-height: 1.5em
+    }
+
+    .friend_photo {
+      float: left;
+      width: 89%;
+      padding: 5px 5px;
+      border: solid 1px gainsboro;
+      background: white
+    }
+
+    .friend_photo .image {
+      width: 150px;
+      height: 150px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      float: left;
+      text-align: center;
+      overflow: hidden
+    }
+
+    .friend_photo .image img {
+      max-height: 150px
+    }
+
+    .filter {
+      margin-bottom: 10px
+    }
+
+    .hide_photo .friend_photo {
+      display: none
+    }
+
+    .hide_photo .line {
+      width: 120px;
+      float: left;
+      border-bottom: 0;
+      height: 160px
+    }
+
+    img {
+      transition: -webkit-transform 0.25s ease;
+      transition: transform 0.25s ease;
+    }
+
+    img:active {
+      -webkit-transform: scale(4);
+      transform: scale(4);
+      z-index: 99;
+      position: fixed;
+      top: 40%;
+      left: 40%;
+      box-shadow: 1px 1px 8px black;
+    }
+
+    #goTop {
+      bottom: 200px;
+      cursor: pointer;
+      height: 35px;
+      position: fixed;
+      right: 155px;
+      width: 44px;
+      z-index: 1000;
+      background-color: #1ABC9C;
+      width: 39px;
+      height: 33px;
+      text-align: center;
+      line-height: 33px;
+      font-weight: bold;
+      font-size: 20px;
+
+    }
+  </style>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+  <script type='text/javascript'
+    src='https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js'></script>
+  <script>
+    function filter(keyw) {
+      // alert(keyw);
+      $('.line').css('display', 'none');
+      for (var i = 0; i < document.getElementsByClassName('line').length; i++) {
+        var el = document.getElementsByClassName('line')[i];
+        var name = el.getAttribute('data-name');
+        var stringArray = $('#all_name').val().split('\n');
+        $.each(stringArray, function (key, value) {
+          if (value == name) {
+            // alert (value +' : '+ name);
+            el.style.display = 'block';
+          }
+        });
+
+        // if (name = '' || removeVi(name).indexOf(removeVi(keyw)) > -1 || removeVi(keyw).indexOf(removeVi(name)) > -1) {
+        //     el.style.display = 'block';
+        // } else {
+        //     el.style.display = 'none';
+        // }
+      }
+      $(window).scroll();
+    }
+
+    function removeVi(str) {
+      str = str.toLowerCase();
+      str = str.replace(/Ă |Ă¡|áº¡|áº£|Ă£|Ă¢|áº§|áº¥|áº­|áº©|áº«|Äƒ|áº±|áº¯|áº·|áº³|áºµ/g, 'a');
+      str = str.replace(/Ă¨|Ă©|áº¹|áº»|áº½|Ăª|á»|áº¿|á»‡|á»ƒ|á»…/g, 'e');
+      str = str.replace(/Ă¬|Ă­|á»‹|á»‰|Ä©/g, 'i');
+      str = str.replace(/Ă²|Ă³|á»|á»|Ăµ|Ă´|á»“|á»‘|á»™|á»•|á»—|Æ¡|á»|á»›|á»£|á»Ÿ|á»¡/g, 'o');
+      str = str.replace(/Ă¹|Ăº|á»¥|á»§|Å©|Æ°|á»«|á»©|á»±|á»­|á»¯/g, 'u');
+      str = str.replace(/á»³|Ă½|á»µ|á»·|á»¹/g, 'y');
+      str = str.replace(/Ä‘/g, 'd');
+      str = str.replace(/!|@('@')|\$|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\'| |\'|\&|\#|\[|\]|~/g, '-');
+      str = str.replace(/-+-/g, '-');
+      str = str.replace(/^\-+|\-+$/g, '');
+      return str;
+    }
+    $(function () {
+      $('img').lazyload({
+        effect: 'fadeIn'
+      });
+    });
+  </script>
+</head>
+
+<body tabindex='0'>
+  <app-root></app-root>
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+
+</html>
